@@ -1,6 +1,8 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
+
+static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int gappx     = 32;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -28,8 +30,16 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
+	//{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	//{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+
+	/* class       instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
+	{ "Gimp",      NULL,     NULL,           0,         1,          0,           0,        -1 },
+	{ "Firefox",   NULL,     NULL,           0,         0,          0,          -1,        -1 },
+	{ "Chromium",  NULL,     NULL,           0,         0,          0,          -1,        -1 },
+    { "St",        NULL,     NULL,           0,         0,          1,           0,        -1 },
+    { "Alacritty", NULL,     NULL,           0,         0,          1,           0,        -1 },
+	{ NULL,        NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 
 /* layout(s) */
